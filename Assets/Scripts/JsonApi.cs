@@ -4,6 +4,10 @@ using System;
 public static class JsonApi {
     private static fsSerializer _serializer = new fsSerializer();
 
+    public static void AddConverter(fsConverter converter) {
+        _serializer.AddConverter(converter);
+    }
+
     public static string Serialize<T>(T value) {
         fsData data;
         var fail = _serializer.TrySerialize<T>(value, out data);

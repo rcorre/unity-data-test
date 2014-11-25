@@ -1,5 +1,11 @@
 {
     "name": "Borgin",
-	"type": "Humanoid",
-	"hp": 25
+    "attributes": {
+	"str": 5,
+	"dex": 4,
+	"con": 3,
+	"int": 8,
+	"wis": 4,
+	"cha": 6,
+    }
 }
