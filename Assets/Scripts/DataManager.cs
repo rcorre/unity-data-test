@@ -6,7 +6,6 @@ using System.Collections.Generic;
 public class DataManager : MonoBehaviour {
 
     void Start() {
-        JsonApi.AddConverter(new AttributeSetConverter());
         var talentData = Resources.Load<TextAsset>("talents");
         var characterData = Resources.Load<TextAsset>("characters");
         //_talents = JsonApi.Deserialize<Dictionary<string, TalentData>>(talentData.text);

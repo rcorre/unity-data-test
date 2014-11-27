@@ -13,6 +13,7 @@ public enum CharacterAttribute {
     Cha
 }
 
+[fsObject(Converter=typeof(AttributeSetConverter))]
 public struct AttributeSet {
     public static int NumValues { get { return Enum.GetValues(typeof(CharacterAttribute)).Length; } } 
     private int[] _values;
