@@ -155,30 +155,30 @@ namespace FullSerializer {
         /// <summary>
         /// Converters that are available.
         /// </summary>
-        private List<fsConverter> _converters;
+        private readonly List<fsConverter> _converters;
 
         /// <summary>
         /// Reference manager for cycle detection.
         /// </summary>
-        private fsCyclicReferenceManager _references;
-        private fsLazyCycleDefinitionWriter _lazyReferenceWriter;
+        private readonly fsCyclicReferenceManager _references;
+        private readonly fsLazyCycleDefinitionWriter _lazyReferenceWriter;
 
         public fsSerializer() {
             _cachedConverters = new Dictionary<Type, fsConverter>();
             _references = new fsCyclicReferenceManager();
             _lazyReferenceWriter = new fsLazyCycleDefinitionWriter();
 
-            _converters = new List<fsConverter>() {
-                new fsNullableConverter() { Serializer = this },
-                new fsGuidConverter() { Serializer = this },
-                new fsTypeConverter() { Serializer = this },
-                new fsDateConverter() { Serializer = this },
-                new fsEnumConverter() { Serializer = this },
-                new fsPrimitiveConverter() { Serializer = this },
-                new fsArrayConverter() { Serializer = this },
-                new fsIEnumerableConverter() { Serializer = this },
-                new fsKeyValuePairConverter() { Serializer = this },
-                new fsReflectedConverter() { Serializer = this }
+            _converters = new List<fsConverter> {
+                new fsNullableConverter { Serializer = this },
+                new fsGuidConverter { Serializer = this },
+                new fsTypeConverter { Serializer = this },
+                new fsDateConverter { Serializer = this },
+                new fsEnumConverter { Serializer = this },
+                new fsPrimitiveConverter { Serializer = this },
+                new fsArrayConverter { Serializer = this },
+                new fsIEnumerableConverter { Serializer = this },
+                new fsKeyValuePairConverter { Serializer = this },
+                new fsReflectedConverter { Serializer = this }
             };
 
             Context = new fsContext();
@@ -213,12 +213,26 @@ namespace FullSerializer {
         private fsConverter GetConverter(Type type) {
             fsConverter converter = null;
 
-            if (_cachedConverters.TryGetValue(type, out converter) == false) {
-                for (int i = 0; i < _converters.Count; ++i) {
-                    if (_converters[i].CanProcess(type)) {
-                        converter = _converters[i];
-                        _cachedConverters[type] = converter;
-                        break;
+            // Check to see if the user has defined a custom converter for the type. If they
+            // have, then we don't need to scan through all of the converters to check which
+            // one can process the type; instead, we directly use the specified converter.
+            var attr = fsPortableReflection.GetAttribute<fsObjectAttribute>(type);
+            if (attr != null && attr.Converter != null) {
+                converter = (fsConverter)Activator.CreateInstance(attr.Converter);
+                converter.Serializer = this;
+                _cachedConverters[type] = converter;
+            }
+
+            // There is no specific converter specified; try all of the general ones to see
+            // which ones matches.
+            else {
+                if (_cachedConverters.TryGetValue(type, out converter) == false) {
+                    for (int i = 0; i < _converters.Count; ++i) {
+                        if (_converters[i].CanProcess(type)) {
+                            converter = _converters[i];
+                            _cachedConverters[type] = converter;
+                            break;
+                        }
                     }
                 }
             }
