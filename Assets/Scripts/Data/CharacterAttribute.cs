@@ -39,17 +39,12 @@ public class AttributeSetConverter : fsConverter {
     }
 
     public override fsFailure TrySerialize(object instance, out fsData serialized, Type storageType) {
-
         var attrSet = (AttributeSet)instance;
 
-        var dict = new Dictionary<string, fsData>() {
-	    { "str", new fsData(attrSet[CharacterAttribute.Str]) },
-	    { "dex", new fsData(attrSet[CharacterAttribute.Dex]) },
-	    { "con", new fsData(attrSet[CharacterAttribute.Con]) },
-	    { "int", new fsData(attrSet[CharacterAttribute.Int]) },
-	    { "wis", new fsData(attrSet[CharacterAttribute.Wis]) },
-	    { "cha", new fsData(attrSet[CharacterAttribute.Cha]) }
-	};
+        var dict = new Dictionary<string, fsData>();
+	foreach (var attr in Enum.GetValues(typeof(CharacterAttribute)).Cast<CharacterAttribute>()) {
+	    dict[attr.ToString()] = new fsData(attrSet[attr]);
+	}
         serialized = new fsData(dict);
         return fsFailure.Success;
     }
@@ -66,12 +61,6 @@ public class AttributeSetConverter : fsConverter {
             var attr = (CharacterAttribute)Enum.Parse(typeof(CharacterAttribute), kvp.Key, true);
             attrSet[attr] = (int)kvp.Value.AsInt64;
         }
-	    Debug.Log("str = " + attrSet[CharacterAttribute.Str]);
-	    Debug.Log("dex = " + attrSet[CharacterAttribute.Dex]);
-	    Debug.Log("con = " + attrSet[CharacterAttribute.Con]);
-	    Debug.Log("int = " + attrSet[CharacterAttribute.Int]);
-	    Debug.Log("wis = " + attrSet[CharacterAttribute.Wis]);
-	    Debug.Log("cha = " + attrSet[CharacterAttribute.Cha]);
         return fsFailure.Success;
     }
 
