@@ -1,4 +1,7 @@
-﻿public enum TalentRequirement {
+﻿using FullSerializer;
+using System.Collections.Generic;
+
+public enum TalentRequirement {
     Melee, // any melee weapon
     Unarmed,
     Blade,
@@ -34,7 +37,6 @@ public enum AOEType {
 }
 
 public class TalentData {
-    public string key; /// <summary> unique identifier, even if name changes </summary>
     public string name; /// <summary> name shown in ui </summary>
     TalentRequirement requirement;
     //costs

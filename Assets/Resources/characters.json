@@ -1,0 +1,35 @@
+[
+	{
+		"name": "Myron",
+		"race": "Human",
+		"level": 2,
+		"xp": 10,
+		"attributes": {
+			"str": 5,
+			"dex": 4,
+			"con": 3,
+			"int": 8,
+			"wis": 4,
+			"cha": 6
+		},
+		"feats": [
+			{
+				"name": "Slash",
+				"major": {
+					"rank": 2,
+					"data": {
+						"key": "strike",
+						"name": "Strike",
+						"requirement": "Melee",
+						"attribute": "Str",
+						"apCost": 1,
+						"cooldown": 0,
+						"stamina": 0,
+						"aoe": "Single",
+						"range": 1
+					}
+				}
+			}
+		]
+	}
+]
