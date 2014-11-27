@@ -14,21 +14,8 @@
 		},
 		"feats": [
 			{
-				"name": "Slash",
-				"major": {
-					"rank": 2,
-					"data": {
-						"key": "strike",
-						"name": "Strike",
-						"requirement": "Melee",
-						"attribute": "Str",
-						"apCost": 1,
-						"cooldown": 0,
-						"stamina": 0,
-						"aoe": "Single",
-						"range": 1
-					}
-				}
+				"name": "Strike",
+				"major": { "key": "strike", "rank": 2}
 			}
 		]
 	}

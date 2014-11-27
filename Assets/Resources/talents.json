@@ -1,6 +1,13 @@
-{
-	"strike": {
+[
+	{
+		"key": "strike",
 		"name": "Strike",
-		"requirement": "Melee"
+		"requirement": "Melee",
+		"attribute": "Str",
+		"apCost": 1,
+		"cooldown": 0,
+		"stamina": 0,
+		"aoe": "Single",
+		"range": 1
 	}
-}
+]
