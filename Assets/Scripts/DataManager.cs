@@ -12,9 +12,14 @@ public class DataManager : MonoBehaviour {
         var characterData = Resources.Load<TextAsset>("characters");
         _talents = JsonApi.Deserialize<TalentData[]>(talentData.text).ToDictionary(x => x.key);
         _characters = JsonApi.Deserialize<CharacterData[]>(characterData.text);
+        Debug.Log(_characters[0].name);
+        Debug.Log(_characters[0].feats.Length);
+        Debug.Log(_characters[0].feats[0].name);
+        Debug.Log(_characters[0].feats[0].major.rank);
+        Debug.Log(_characters[0].feats[0].major.data.damage);
     }
 
-    static TalentData GetTalent(string key) {
+    public static TalentData GetTalent(string key) {
         if (_talents == null) { Debug.LogError("tried to access talent store before it loaded"); }
         return _talents[key];
     }

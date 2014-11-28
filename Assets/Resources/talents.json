@@ -8,6 +8,7 @@
 		"cooldown": 0,
 		"stamina": 0,
 		"aoe": "Single",
-		"range": 1
+		"range": 1,
+		"damage": 4
 	}
 ]
