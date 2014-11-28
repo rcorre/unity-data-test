@@ -1,7 +1,16 @@
 ﻿using FullSerializer;
 using System.Collections.Generic;
 
+public enum TalentType {
+    Major,
+    Minor,
+    Technique,
+    Effect,
+    Trigger
+}
+
 public enum TalentRequirement {
+    None,
     Melee, // any melee weapon
     Unarmed,
     Blade,
@@ -39,6 +48,7 @@ public enum AOEType {
 public class TalentData {
     public readonly string key; /// <summary> unique id, unchanged even if name changes </summary>
     public readonly string name; /// <summary> name shown in ui </summary>
+    public readonly TalentType type;
     public readonly TalentRequirement requirement;
     //costs
     public readonly CharacterAttribute attribute;
@@ -47,12 +57,11 @@ public class TalentData {
     public readonly int stamina;
     // trajectory
     public readonly AOEType aoe;
-    public readonly int minRange;
-    public readonly int maxRange;
+    public readonly int range;
     // modifiers
     public readonly int toHitMod;
     // effects
     public readonly int damage;
     public readonly int healing;
-    public readonly StatusEffect effect;
+    public readonly StatusEffect statusEffect;
 }

@@ -15,8 +15,9 @@ public class DataManager : MonoBehaviour {
         Debug.Log(_characters[0].name);
         Debug.Log(_characters[0].feats.Length);
         Debug.Log(_characters[0].feats[0].name);
-        Debug.Log(_characters[0].feats[0].major.rank);
-        Debug.Log(_characters[0].feats[0].major.data.damage);
+        Debug.Log(_characters[0].feats[0].talents[0].rank);
+        Debug.Log(_characters[0].feats[2].talents[1].data.statusEffect);
+        Debug.Log(_characters[0].archetypes[1].feats[1]);
     }
 
     public static TalentData GetTalent(string key) {

@@ -14,8 +14,44 @@
 		},
 		"feats": [
 			{
-				"name": "Strike",
-				"major": { "key": "strike", "rank": 2}
+				"name": "Slash",
+				"talents": [
+					{ "key": "strike", "rank": 2},
+					{ "key": "wound", "rank": 1},
+					{ "key": "feint", "rank": 2}
+				]
+			},
+			{
+				"name": "Dragoon Strike",
+				"talents": [
+					{ "key": "leap", "rank": 2},
+					{ "key": "power", "rank": 3}
+				]
+			},
+			{
+				"name": "Torch",
+				"talents": [
+					{ "key": "breath", "rank": 1},
+					{ "key": "combust", "rank": 3}
+				]
+			},
+			{
+				"name": "Last Gift",
+				"talents": [
+					{ "key": "wave", "rank": 2},
+					{ "key": "combust", "rank": 3},
+					{ "key": "lastResort", "rank": 1}
+				]
+			}
+		],
+		"archetypes": [
+			{
+				"name": "Warrior",
+				"feats": [ "Slash", "Dragoon Strike" ]
+			},
+			{
+				"name": "Mage",
+				"feats": [ "Torch", "Last Gift" ]
 			}
 		]
 	}

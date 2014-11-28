@@ -15,4 +15,5 @@ public struct CharacterData {
     public readonly int xp;
     public readonly AttributeSet attributes;
     public Feat[] feats;
+    public Archetype[] archetypes;
 }
