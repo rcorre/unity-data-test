@@ -7,17 +7,17 @@ using FullSerializer;
 using TalentStore = System.Collections.Generic.Dictionary<string,TalentData>;
 
 public class DataManager : MonoBehaviour {
-    void Start() {
+    void Awake() {
         var talentData = Resources.Load<TextAsset>("talents");
         var characterData = Resources.Load<TextAsset>("characters");
         _talents = JsonApi.Deserialize<TalentData[]>(talentData.text).ToDictionary(x => x.key);
         _characters = JsonApi.Deserialize<CharacterData[]>(characterData.text);
-        Debug.Log(_characters[0].name);
-        Debug.Log(_characters[0].feats.Length);
-        Debug.Log(_characters[0].feats[0].name);
-        Debug.Log(_characters[0].feats[0].talents[0].rank);
-        Debug.Log(_characters[0].feats[2].talents[1].data.statusEffect);
-        Debug.Log(_characters[0].archetypes[1].feats[1]);
+    }
+
+    // right now doing linear search for name
+    // probably wont need to do this for actual game uses
+    public static CharacterData GetCharacter(string name) {
+        return _characters.First(x => x.name == name);
     }
 
     public static TalentData GetTalent(string key) {

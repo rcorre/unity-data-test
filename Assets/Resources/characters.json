@@ -36,7 +36,7 @@
 				]
 			},
 			{
-				"name": "Last Gift",
+				"name": "Crash and Burn",
 				"talents": [
 					{ "key": "wave", "rank": 2},
 					{ "key": "combust", "rank": 3},
@@ -51,7 +51,7 @@
 			},
 			{
 				"name": "Mage",
-				"feats": [ "Torch", "Last Gift" ]
+				"feats": [ "Torch", "Crash and Burn" ]
 			}
 		]
 	}
