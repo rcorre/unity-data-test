@@ -9,10 +9,10 @@ public enum CharacterRace {
 }
 
 public struct CharacterData {
-    public string name;
-    public CharacterRace race;
-    public int level;
-    public int xp;
-    public AttributeSet attributes;
+    public readonly string name;
+    public readonly CharacterRace race;
+    public readonly int level;
+    public readonly int xp;
+    public readonly AttributeSet attributes;
     public Feat[] feats;
 }

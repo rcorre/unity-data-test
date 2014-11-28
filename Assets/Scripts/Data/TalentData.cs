@@ -37,22 +37,22 @@ public enum AOEType {
 }
 
 public class TalentData {
-    public string key; /// <summary> unique id, unchanged even if name changes </summary>
-    public string name; /// <summary> name shown in ui </summary>
-    public TalentRequirement requirement;
+    public readonly string key; /// <summary> unique id, unchanged even if name changes </summary>
+    public readonly string name; /// <summary> name shown in ui </summary>
+    public readonly TalentRequirement requirement;
     //costs
-    public CharacterAttribute attribute;
-    public int apCost;
-    public int cooldown;
-    public int stamina;
+    public readonly CharacterAttribute attribute;
+    public readonly int apCost;
+    public readonly int cooldown;
+    public readonly int stamina;
     // trajectory
-    public AOEType aoe;
-    public int minRange;
-    public int maxRange;
+    public readonly AOEType aoe;
+    public readonly int minRange;
+    public readonly int maxRange;
     // modifiers
-    public int toHitMod;
+    public readonly int toHitMod;
     // effects
-    public int damage;
-    public int healing;
-    public StatusEffect effect;
+    public readonly int damage;
+    public readonly int healing;
+    public readonly StatusEffect effect;
 }
