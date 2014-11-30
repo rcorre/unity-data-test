@@ -3,10 +3,20 @@ using UnityEngine.UI;
 using System.Collections;
 
 public class PrintSomeData : MonoBehaviour {
+    public Font font;
+
+    void OnGui() {
+        GUI.skin.font = font;
+    }
 
     // Use this for initialization
     void Start() {
         var character = DataManager.GetCharacter("Myron");
+        Debug.Log(character.name);
+        Debug.Log(character.feats[0].name);
+        Debug.Log(character.feats[0].talents[0].rank);
+        Debug.Log(character.feats[2].talents[1].data.statusEffect);
+        Debug.Log(character.archetypes[1].feats[1]);
         var textBox = GetComponent<Text>();
         textBox.text = "";
         textBox.text += character.name + "\n";
