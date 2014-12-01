@@ -23,5 +23,6 @@ public class WeaponModel : EquipmentModel {
     public readonly DamageType damageType;
     public readonly DiceRoll damage;
     public readonly int toHit;
-    public WeaponProperty[] properties;
+    public readonly int block;
+    public readonly WeaponProperty[] properties;
 }

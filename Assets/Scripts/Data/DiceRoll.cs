@@ -17,20 +17,27 @@ public struct DiceRoll {
     }
 
     /// <summary>
-    /// construct a dice roll from a string of format ?d? + ?
+    /// construct a dice roll from a string of format nds + b
     /// </summary>
     public DiceRoll(string spec) {
         Match match = RollRegex.Match(spec);
         if (match == Match.Empty) { 
             Debug.LogError("could not parse dice roll from " + spec); 
         }
-        _numDice = int.Parse(match.Groups["dice"].Value);
+
+        _numDice  = int.Parse(match.Groups["dice"].Value);
         _numSides = int.Parse(match.Groups["sides"].Value);
-        _bonus = int.Parse(match.Groups["bonus"].Value);
+        _bonus    = int.Parse(match.Groups["bonus"].Value);
+    }
+
+    public DiceRoll(int numDice, int numSides, int bonus) {
+        _numDice = numDice;
+        _numSides = numSides;
+        _bonus = bonus;
     }
 
     /// <summary>
-    /// convert a dice roll to a string of format ?d? + ?
+    /// convert a dice roll to a string of format nds + b
     /// </summary>
     public override string ToString() {
         return String.Format(StringFormat, _numDice, _numSides, _bonus);
@@ -47,8 +54,17 @@ public struct DiceRoll {
         }
         return sum;
     }
+
+    public static DiceRoll operator *(DiceRoll roll, float factor) {
+        int numSides = Mathf.FloorToInt(roll._numSides * factor);
+        int bonus = Mathf.FloorToInt(roll._bonus * factor);
+        return new DiceRoll(roll._numDice, numSides, bonus);
+    }
 }
 
+/// <summary>
+/// parse a dice roll from a string of form "nds + b"
+/// </summary>
 public class DiceRollConverter : fsConverter {
     public override bool CanProcess(Type type) {
         return type == typeof(DiceRoll);

@@ -9,7 +9,7 @@
 		"damage": "2d8 + 2",
 		"toHit": 5,
 		"properties": ["Versatile"],
-		"block": "3"
+		"block": 3
 	},
 	{
 		"key": "buckler",
@@ -20,6 +20,6 @@
 		"damageType": "Slash",
 		"damage": "2d5 + 0",
 		"toHit": 3,
-		"block": "5"
+		"block": 5
 	}
 ]
