@@ -6,6 +6,7 @@ using FullSerializer;
 [fsObject(Converter=typeof(MaterialConverter))]
 public class EquipmentMaterial {
     public string key;
+    public string name;
     public float durability;
     public float weight;
     public Dictionary<DamageType, float> damage;
@@ -17,14 +18,15 @@ public class MaterialConverter : fsConverter {
     }
 
     public override fsFailure TrySerialize(object instance, out fsData serialized, Type storageType) {
-        var mat = (EquipmentMaterial)instance;
-
-	var dict = new Dictionary<string, fsData>();
+        var mat    = (EquipmentMaterial)instance;
+	var dict   = new Dictionary<string, fsData>();
 	var dmgMap = mat.damage.ToDictionary(x => x.Key.ToString(), x => new fsData(x.Value));
-	dict["key"]        = new fsData(mat.key);
-	dict["durability"] = new fsData(mat.durability);
-	dict["damage"]     = new fsData(dmgMap);
-	serialized         = new fsData(dict);
+
+	dict["name"]        = new fsData(mat.name);
+	dict["key"]         = new fsData(mat.key);
+	dict["durability"]  = new fsData(mat.durability);
+	dict["damage"]      = new fsData(dmgMap);
+	serialized          = new fsData(dict);
         return fsFailure.Success;
     }
 
@@ -34,13 +36,15 @@ public class MaterialConverter : fsConverter {
             return fsFailure.Fail("Expected object fsData type but got " + storage.Type);
         }
 
-        var mat = (EquipmentMaterial)instance;
-        var dict = storage.AsDictionary;
+        var mat    = (EquipmentMaterial)instance;
+        var dict   = storage.AsDictionary;
         var dmgMap = dict["damage"].AsDictionary;
 
         mat.key        = dict["key"].AsString;
+        mat.name       = dict["name"].AsString;
         mat.durability = (float)dict["durability"].AsDouble;
         mat.weight     = (float)dict["weight"].AsDouble;
+
         mat.damage = dmgMap.ToDictionary(
             x => (DamageType)Enum.Parse(typeof(DamageType), x.Key), 
             x => (float)x.Value.AsDouble);

@@ -17,4 +17,5 @@ public struct CharacterData {
     public Feat[] feats;
     public Archetype[] archetypes;
     public Weapon mainHand;
+    public Weapon offHand;
 }

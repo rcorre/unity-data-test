@@ -16,6 +16,10 @@
 			"modelKey": "longSword",
 			"materialKey": "iron"
 		},
+		"offHand": {
+			"modelKey": "longSword",
+			"materialKey": "iron"
+		},
 		"feats": [
 			{
 				"name": "Slash",
