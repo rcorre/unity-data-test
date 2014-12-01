@@ -12,6 +12,10 @@
 			"wis": 4,
 			"cha": 6
 		},
+		"mainHand": {
+			"modelKey": "longSword",
+			"materialKey": "iron"
+		},
 		"feats": [
 			{
 				"name": "Slash",

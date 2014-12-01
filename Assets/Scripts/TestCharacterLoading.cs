@@ -1,8 +1,10 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 
 public class TestCharacterLoading : MonoBehaviour {
+    const string fmt = "{0}: {1}\n"; // how to format printed data
     public Font font;
 
     void OnGui() {
@@ -12,17 +14,17 @@ public class TestCharacterLoading : MonoBehaviour {
     // Use this for initialization
     void Start() {
         var character = DataManager.GetCharacter("Myron");
-        Debug.Log(character.name);
-        Debug.Log(character.feats[0].name);
-        Debug.Log(character.feats[0].talents[0].rank);
-        Debug.Log(character.feats[2].talents[1].data.statusEffect);
-        Debug.Log(character.archetypes[1].feats[1]);
+        string output =
+            string.Format(fmt, "name", character.name) +
+            string.Format(fmt, "race", character.race) +
+            string.Format(fmt, "dex", character.attributes[CharacterAttribute.Dex]) +
+            string.Format(fmt, "archetypes[0]", character.archetypes[0].name) +
+            string.Format(fmt, "archetypes[0].feats[0]", character.archetypes[0].feats[0]) +
+            string.Format(fmt, "feats[0]", character.feats[0].name) +
+            string.Format(fmt, "feats[0].talents[0]", character.feats[0].talents[0].data.name) +
+            string.Format(fmt, "feats[0].talents[0].apCost", character.feats[0].talents[0].data.apCost);
+        Debug.Log(output);
         var textBox = GetComponent<Text>();
-        textBox.text = "Character Test:\n";
-        textBox.text += character.name + "\n";
-        textBox.text += character.feats[0].name + "\n";
-        textBox.text += character.feats[0].talents[0].rank + "\n";
-        textBox.text += character.feats[2].talents[1].data.statusEffect + "\n";
-        textBox.text += character.archetypes[1].feats[1];
+        textBox.text = "Character Test:\n" + output;
     }
 }

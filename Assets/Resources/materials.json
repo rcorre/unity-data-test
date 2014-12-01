@@ -1,0 +1,53 @@
+[
+	{
+		"key": "iron",
+		"name": "Iron",
+		"durability": 1.0,
+		"weight": 1.0,
+		"damage": {
+			"Slash": 1.0,
+			"Crush": 1.0,
+			"Pierce": 1.0,
+			"Fire": 1.0,
+			"Ice": 0.7,
+			"Electric": 1.0,
+			"Earth": 0.7,
+			"Dark": 1.0,
+			"Light": 0.7
+		}
+	},
+	{
+		"key": "stone",
+		"name": "Stone",
+		"durability": 2.0,
+		"weight": 1.5,
+		"damage": {
+			"Slash": 0.6,
+			"Crush": 1.0,
+			"Pierce": 0.8,
+			"Fire": 0.8,
+			"Ice": 1.0,
+			"Electric": 0.5,
+			"Earth": 1.0,
+			"Dark": 0.8,
+			"Light": 1.0
+		}
+	},
+	{
+		"key": "wood",
+		"name": "Wood",
+		"durability": 0.7,
+		"weight": 0.7,
+		"damage": {
+			"Slash": 0.3,
+			"Crush": 0.8,
+			"Pierce": 0.7,
+			"Fire": 1.0,
+			"Ice": 1.0,
+			"Electric": 1.0,
+			"Earth": 1.0,
+			"Dark": 1.0,
+			"Light": 1.0
+		}
+	}
+]

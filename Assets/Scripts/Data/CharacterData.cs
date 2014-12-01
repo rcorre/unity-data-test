@@ -16,4 +16,5 @@ public struct CharacterData {
     public readonly AttributeSet attributes;
     public Feat[] feats;
     public Archetype[] archetypes;
+    public Weapon mainHand;
 }
