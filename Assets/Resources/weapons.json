@@ -6,6 +6,8 @@
 		"value": 20,
 		"durability": 50,
 		"damageType": "Slash",
-		"toHit": 5
+		"damage": "2d8 + 2",
+		"toHit": 5,
+		"properties": ["Versatile"]
 	}
 ]
