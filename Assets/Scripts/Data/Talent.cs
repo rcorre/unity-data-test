@@ -7,7 +7,7 @@ public struct Talent {
     [SerializeField]
     public string key {
         get { return  data.key; }
-        private set { data = DataManager.GetTalent(value); }
+        private set { data = DataManager.Fetch<TalentData>(value); }
     }
     [fsIgnore]
     public TalentData data { get; private set; }

@@ -13,7 +13,7 @@ public class TestCharacterLoading : MonoBehaviour {
 
     // Use this for initialization
     void Start() {
-        var character = DataManager.GetCharacter("Myron");
+        var character = DataManager.Fetch<CharacterData>("Myron");
         string output =
             string.Format(fmt, "name", character.name) +
             string.Format(fmt, "race", character.race) +

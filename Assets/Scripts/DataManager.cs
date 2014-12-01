@@ -9,40 +9,36 @@ using WeaponStore = System.Collections.Generic.Dictionary<string,WeaponModel>;
 using MaterialStore = System.Collections.Generic.Dictionary<string,EquipmentMaterial>;
 
 public class DataManager : MonoBehaviour {
+    /// <summary>
+    /// objects of type T are accessed as _store[T][key]
+    /// </summary>
+    private static Dictionary<Type, Dictionary<string, object>> _store;
+
     void Awake() {
-        var talentData = Resources.Load<TextAsset>("talents");
-        var characterData = Resources.Load<TextAsset>("characters");
-        var weaponData = Resources.Load<TextAsset>("weapons");
-        var equipmentData = Resources.Load<TextAsset>("materials");
-        _talents = JsonApi.Deserialize<TalentData[]>(talentData.text).ToDictionary(x => x.key);
-        _materials = JsonApi.Deserialize<EquipmentMaterial[]>(equipmentData.text).ToDictionary(x => x.key);
-        _weapons = JsonApi.Deserialize<WeaponModel[]>(weaponData.text).ToDictionary(x => x.key);
-        _characters = JsonApi.Deserialize<CharacterData[]>(characterData.text);
+        _store = new Dictionary<Type, Dictionary<string, object>>();
+	// order matters, cannot load characters before talents or equipment
+        Load<TalentData>("talents", x => x.key);
+        Load<EquipmentMaterial>("materials", x => x.key);
+        Load<WeaponModel>("weapons", x => x.key);
+        Load<CharacterData>("characters", x => x.name);
     }
 
-    // right now doing linear search for name
-    // probably wont need to do this for actual game uses
-    public static CharacterData GetCharacter(string name) {
-        return _characters.First(x => x.name == name);
+    /// <summary>
+    /// load and cache data of type T
+    /// </summary>
+    /// <typeparam name="T">Type to deserialize into</typeparam>
+    /// <param name="fileName">name of file under Resources, without extension</param>
+    /// <param name="getKey">key on which to index store</param>
+    public static void Load<T>(string fileName, Func<T, string> getKey) {
+	var asset = Resources.Load<TextAsset>(fileName);
+	var data = JsonApi.Deserialize<T[]>(asset.text);
+	_store[typeof(T)] = data.ToDictionary(x => getKey(x), x => (object)x);
     }
 
-    public static TalentData GetTalent(string key) {
-        if (_talents == null) { Debug.LogError("tried to access talent store before it loaded"); }
-        return _talents[key];
+    public static T Fetch<T>(string key) {
+	Type type = typeof(T);
+	Util.Assert(_store.ContainsKey(type), "no data of type " + type + "has been loaded");
+	Util.Assert(_store[type].ContainsKey(key), "key " + key + " not found in store of " + type);
+        return (T)_store[typeof(T)][key];
     }
-
-    public static WeaponModel GetWeapon(string key) {
-        if (_weapons == null) { Debug.LogError("tried to access weapon store before it loaded"); }
-        return _weapons[key];
-    }
-
-    public static EquipmentMaterial GetMaterial(string key) {
-        if (_materials == null) { Debug.LogError("tried to access material store before it loaded"); }
-        return _materials[key];
-    }
-
-    private static CharacterData[] _characters;
-    private static TalentStore _talents;
-    private static WeaponStore _weapons;
-    private static MaterialStore _materials;
 }

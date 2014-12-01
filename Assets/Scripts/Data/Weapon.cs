@@ -19,13 +19,13 @@ public class Weapon {
     [SerializeField]
     public string modelKey {
         get { return model.key; }
-        set { model = DataManager.GetWeapon(value); }
+        set { model = DataManager.Fetch<WeaponModel>(value); }
     }
 
     [SerializeField]
     public string materialKey {
         get { return material.key; }
-        set { material = DataManager.GetMaterial(value); }
+        set { material = DataManager.Fetch<EquipmentMaterial>(value); }
     }
 
     public override string ToString() {
