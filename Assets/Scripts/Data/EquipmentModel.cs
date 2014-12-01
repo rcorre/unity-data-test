@@ -1,3 +1,3 @@
 ﻿public class EquipmentModel : ItemModel {
-    public int durability;
+    public float durability;
 }

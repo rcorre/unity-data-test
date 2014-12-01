@@ -1,12 +1,20 @@
-﻿using FullSerializer;
-using System;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Weapon {
-    const string toStringFmt = "{0} {1}"; // {model} {material}
+    const string toStringFmt = "{0} {1} ({2}%)"; // {model} {material} ({condition%})
+
     public WeaponModel model;
     public EquipmentMaterial material;
+
+    private float _condition;
+    /// <summary>
+    /// condition between 0 (broken) and 1 (perfect)
+    /// </summary>
+    [SerializeField]
+    public float condition {
+        get { return _condition; }
+        set { _condition = Mathf.Clamp01(value); }
+    }
 
     [SerializeField]
     public string modelKey {
@@ -21,6 +29,6 @@ public class Weapon {
     }
 
     public override string ToString() {
-        return string.Format(toStringFmt, material.name, model.name);
+        return string.Format(toStringFmt, material.name, model.name, condition * 100);
     }
 }

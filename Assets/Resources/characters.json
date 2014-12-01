@@ -14,11 +14,13 @@
 		},
 		"mainHand": {
 			"modelKey": "longSword",
-			"materialKey": "iron"
+			"materialKey": "iron",
+			"condition": 0.8
 		},
 		"offHand": {
-			"modelKey": "longSword",
-			"materialKey": "iron"
+			"modelKey": "buckler",
+			"materialKey": "wood",
+			"condition": 0.6
 		},
 		"feats": [
 			{

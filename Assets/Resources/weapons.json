@@ -2,12 +2,24 @@
 	{
 		"key": "longSword",
 		"name": "Long Sword",
-		"weight": 5,
-		"value": 20,
-		"durability": 50,
+		"weight": 8,
+		"value": 40,
+		"durability": 1.0,
 		"damageType": "Slash",
 		"damage": "2d8 + 2",
 		"toHit": 5,
-		"properties": ["Versatile"]
+		"properties": ["Versatile"],
+		"block": "3"
+	},
+	{
+		"key": "buckler",
+		"name": "Buckler",
+		"weight": 6,
+		"value": 20,
+		"durability": 1.5,
+		"damageType": "Slash",
+		"damage": "2d5 + 0",
+		"toHit": 3,
+		"block": "5"
 	}
 ]
