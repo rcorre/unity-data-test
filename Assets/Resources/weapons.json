@@ -1,0 +1,11 @@
+[
+	{
+		"key": "longSword",
+		"name": "Long Sword",
+		"weight": 5,
+		"value": 20,
+		"durability": 50,
+		"damageType": "Slash",
+		"toHit": 5
+	}
+]

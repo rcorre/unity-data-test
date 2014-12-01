@@ -2,7 +2,7 @@
 using UnityEngine.UI;
 using System.Collections;
 
-public class PrintSomeData : MonoBehaviour {
+public class TestCharacterLoading : MonoBehaviour {
     public Font font;
 
     void OnGui() {
@@ -18,7 +18,7 @@ public class PrintSomeData : MonoBehaviour {
         Debug.Log(character.feats[2].talents[1].data.statusEffect);
         Debug.Log(character.archetypes[1].feats[1]);
         var textBox = GetComponent<Text>();
-        textBox.text = "";
+        textBox.text = "Character Test:\n";
         textBox.text += character.name + "\n";
         textBox.text += character.feats[0].name + "\n";
         textBox.text += character.feats[0].talents[0].rank + "\n";
