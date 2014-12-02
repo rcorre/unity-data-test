@@ -1,8 +1,4 @@
-﻿using System;
-using System.Linq;
-using System.Collections.Generic;
-using FullSerializer;
-using UnityEngine;
+﻿using FullSerializer;
 
 public enum CharacterAttribute {
     Str,
@@ -13,12 +9,6 @@ public enum CharacterAttribute {
     Cha
 }
 
-[fsObject(Converter=typeof(AttributeSetConverter))]
-public class AttributeSet : Enumap<CharacterAttribute, int> {
-}
-
-public class AttributeSetConverter : DictConverter {
-    protected override object Init() {
-        return new AttributeSet();
-    }
-}
+[fsObject(Converter = typeof(AttributeSetConverter))]
+public class AttributeSet : Enumap<CharacterAttribute, int> { }
+public class AttributeSetConverter : DictConverter<AttributeSet> { }
