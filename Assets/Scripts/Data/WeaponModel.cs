@@ -1,26 +1,12 @@
-﻿public enum DamageType {
-    Slash,
-    Crush,
-    Pierce,
-    Fire,
-    Ice,
-    Electric,
-    Earth,
-    Dark,
-    Light,
-    Mind,
-    Force
-}
-
-public enum WeaponProperty {
+﻿public enum WeaponProperty {
     Reach,
     Finesse,
     Versatile,
     TwoHanded
 }
 
-public class WeaponModel : EquipmentModel {
-    public readonly DamageType damageType;
+public class WeaponModel : ItemModel {
+    public readonly Element damageType;
     public readonly DiceRoll damage;
     public readonly int toHit;
     public readonly int block;

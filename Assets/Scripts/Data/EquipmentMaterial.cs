@@ -7,9 +7,8 @@ using FullSerializer;
 public class EquipmentMaterial {
     public string key;
     public string name;
-    public float durability;
     public float weight;
-    public Dictionary<DamageType, float> damage;
+    public Dictionary<Element, float> damage;
 }
 
 public class MaterialConverter : fsConverter {
@@ -24,7 +23,6 @@ public class MaterialConverter : fsConverter {
 
 	dict["name"]        = new fsData(mat.name);
 	dict["key"]         = new fsData(mat.key);
-	dict["durability"]  = new fsData(mat.durability);
 	dict["damage"]      = new fsData(dmgMap);
 	serialized          = new fsData(dict);
         return fsFailure.Success;
@@ -42,11 +40,10 @@ public class MaterialConverter : fsConverter {
 
         mat.key        = dict["key"].AsString;
         mat.name       = dict["name"].AsString;
-        mat.durability = (float)dict["durability"].AsDouble;
         mat.weight     = (float)dict["weight"].AsDouble;
 
         mat.damage = dmgMap.ToDictionary(
-            x => (DamageType)Enum.Parse(typeof(DamageType), x.Key), 
+            x => (Element)Enum.Parse(typeof(Element), x.Key), 
             x => (float)x.Value.AsDouble);
         return fsFailure.Success;
     }

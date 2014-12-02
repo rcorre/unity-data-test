@@ -34,8 +34,8 @@
 		}
 	},
 	{
-		"key": "wood",
-		"name": "Wood",
+		"key": "oak",
+		"name": "Oak",
 		"durability": 0.7,
 		"weight": 0.7,
 		"damage": {
