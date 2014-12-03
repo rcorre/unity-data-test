@@ -12,18 +12,20 @@
 			"wis": 4,
 			"cha": 6
 		},
-		"mainHand": {
-			"modelKey": "longSword",
-			"materialKey": "iron"
-		},
-		"offHand": {
-			"modelKey": "buckler",
-			"materialKey": "oak"
-		},
-		"torso": {
-			"modelKey": "cuirass",
-			"materialKey": "iron"
-		},
+		"equipment": [
+			{
+				"modelKey": "longSword",
+				"materialKey": "iron"
+			},
+			{
+				"modelKey": "buckler",
+				"materialKey": "oak"
+			},
+			{
+				"modelKey": "cuirass",
+				"materialKey": "iron"
+			}
+		],
 		"feats": [
 			{
 				"name": "Slash",

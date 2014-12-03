@@ -18,6 +18,16 @@ public enum Element {
     Force
 }
 
+/// <summary>
+/// Maps each element to an int (for damage/resistance)
+/// </summary>
 [fsObject(Converter = typeof(ElementSetConverter))]
 public class ElementSet : Enumap<Element, int> { }
-public class ElementSetConverter : DictConverter<ElementSet> { }
+class ElementSetConverter : DictConverter<ElementSet> { }
+
+/// <summary>
+/// Maps each element to a float (for damage/resistance multiplication factor)
+/// </summary>
+[fsObject(Converter = typeof(ElementMultiplierConverter))]
+public class ElementMultiplier : Enumap<Element, float> { }
+class ElementMultiplierConverter : DictConverter<ElementMultiplier> { }

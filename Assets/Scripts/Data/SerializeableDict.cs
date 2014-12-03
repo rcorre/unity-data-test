@@ -3,9 +3,13 @@ using System.Linq;
 using System.Collections.Generic;
 using FullSerializer;
 
+/// <summary>
+/// thouroughly untested. expect nothing
+/// </summary>
+/// <typeparam name="K"></typeparam>
+/// <typeparam name="V"></typeparam>
 public abstract class SerializeableDict<K,V> : Dictionary<K,V>, IJsonDict {
     public void SetValue(string key, fsData val) {
-        Type valType = typeof(V);
         object result = null;
         switch (val.Type) {
             case fsDataType.Array:

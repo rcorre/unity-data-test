@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using System.Collections;
+using FullSerializer;
 
 public enum CharacterRace {
     Human,
@@ -7,6 +7,19 @@ public enum CharacterRace {
     Elf,
     Dwarf
 }
+
+public enum CharacterAttribute {
+    Str,
+    Dex,
+    Con,
+    Int,
+    Wis,
+    Cha
+}
+
+[fsObject(Converter = typeof(AttributeSetConverter))]
+public class AttributeSet : Enumap<CharacterAttribute, int> { }
+public class AttributeSetConverter : DictConverter<AttributeSet> { }
 
 public struct CharacterData {
     public readonly string name;
@@ -16,7 +29,5 @@ public struct CharacterData {
     public readonly AttributeSet attributes;
     public Feat[] feats;
     public Archetype[] archetypes;
-    public Weapon mainHand;
-    public Weapon offHand;
-    public Armor torso;
+    public Equipment[] equipment;
 }

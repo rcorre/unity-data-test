@@ -38,4 +38,8 @@ public abstract class Enumap<K,V> : IJsonDict {
     }
 
     public string[] Keys { get { return Enum.GetNames(typeof(K)); } }
+
+    public static IEnumerable<K> EnumKeys {
+        get { return Enum.GetValues(typeof(K)).Cast<K>(); }
+    }
 }
