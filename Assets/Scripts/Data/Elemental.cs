@@ -13,9 +13,7 @@ public enum Element {
     Electric,
     Earth,
     Dark,
-    Light,
-    Mind,
-    Force
+    Light
 }
 
 /// <summary>

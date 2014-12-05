@@ -23,9 +23,9 @@ public class TestCharacterLoading : MonoBehaviour {
             string.Format(fmt, "feats[0]", character.feats[0].name) +
             string.Format(fmt, "feats[0].talents[0]", character.feats[0].talents[0].data.name) +
             string.Format(fmt, "feats[0].talents[0].apCost", character.feats[0].talents[0].data.apCost) +
-            string.Format(fmt, "mainHand", character.equipment[0].ToString()) +
-            string.Format(fmt, "offHand", character.equipment[1].ToString()) +
-            string.Format(fmt, "torso", character.equipment[2].ToString());
+            string.Format(fmt, "mainHand", character.mainHand.ToString()) +
+            string.Format(fmt, "offHand", character.offHand.ToString()) +
+            string.Format(fmt, "torso", character.armor[0].ToString());
         Debug.Log(output);
         var textBox = GetComponent<Text>();
         textBox.text = "Character Test:\n" + output;

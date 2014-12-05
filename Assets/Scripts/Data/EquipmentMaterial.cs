@@ -4,17 +4,16 @@ using System.Collections.Generic;
 using FullSerializer;
 
 public class EquipmentMaterial {
-    public string key;
-    public string name;
-    public float weight;
-    public float armorClass;
-    public float magicArmorClass;
+    public readonly string key;
+    public readonly string name;
+    public readonly float weight;
+    public readonly float value;
     /// <summary>
     /// multiplies damage for the corresponding element
     /// </summary>
-    public ElementMultiplier damage;
+    public readonly ElementMultiplier damage;
     /// <summary>
     /// multiplies resistance for the corresponding element
     /// </summary>
-    public ElementMultiplier resist;
+    public readonly ElementMultiplier resist;
 }

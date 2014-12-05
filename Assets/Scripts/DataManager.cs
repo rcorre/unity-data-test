@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using FullSerializer;
 
 using TalentStore = System.Collections.Generic.Dictionary<string,TalentData>;
-using EquipmentStore = System.Collections.Generic.Dictionary<string,EquipmentModel>;
+using EquipmentStore = System.Collections.Generic.Dictionary<string,EquipmentData>;
 using MaterialStore = System.Collections.Generic.Dictionary<string,EquipmentMaterial>;
 
 public class DataManager : MonoBehaviour {
@@ -19,7 +19,8 @@ public class DataManager : MonoBehaviour {
 	// order matters, cannot load characters before talents or equipment
         Load<TalentData>("talents", x => x.key);
         Load<EquipmentMaterial>("materials", x => x.key);
-        Load<EquipmentModel>("equipment", x => x.key);
+        Load<WeaponData>("weapons", x => x.key);
+        Load<ArmorData>("armor", x => x.key);
         Load<CharacterData>("characters", x => x.name);
     }
 

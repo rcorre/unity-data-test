@@ -29,5 +29,7 @@ public struct CharacterData {
     public readonly AttributeSet attributes;
     public Feat[] feats;
     public Archetype[] archetypes;
-    public Equipment[] equipment;
+    public Weapon mainHand;
+    public Weapon offHand;
+    public Armor[] armor;
 }
