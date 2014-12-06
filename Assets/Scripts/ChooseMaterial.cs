@@ -5,13 +5,13 @@ using System.Linq;
 
 public class ChooseMaterial : MonoBehaviour {
     public int width, height;
-    public string selection { get; private set; }
+    public string selection { get { return _options[_index]; } }
+    private int _index;
     private string[] _options;
 
     void OnGUI() {
         var area = new Rect(transform.position.x, transform.position.y, width, height);
-        int idx = GUI.SelectionGrid(area, 0, _options, 1);
-        selection = _options[idx];
+        _index = GUI.SelectionGrid(area, _index, _options, 1);
     }
 
     // Use this for initialization
