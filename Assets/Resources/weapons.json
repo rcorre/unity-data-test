@@ -54,7 +54,7 @@
 		"attackType": "Melee",
 		"element": "Crush",
 		"ammoType": "None",
-		"damage": "3d5 + 2",
+		"damage": "3d5 + 3",
 		"accuracy": 6,
 		"minRange": 1,
 		"maxRange": 2
@@ -78,6 +78,26 @@
 		"accuracy": 4,
 		"minRange": 1,
 		"maxRange": 1
+	},
+	{
+		"key": "lance",
+		"name": "Lance",
+		"weight": 8,
+		"value": 30,
+		"armorClass": {
+			"melee": 4,
+			"ranged": 1,
+			"magic": 1
+		},
+		"resistance": 3,
+		"style": "Versatile",
+		"attackType": "Melee",
+		"element": "Pierce",
+		"ammoType": "None",
+		"damage": "3d6 + 0",
+		"accuracy": 3,
+		"minRange": 1,
+		"maxRange": 2
 	},
 	{
 		"key": "buckler",
