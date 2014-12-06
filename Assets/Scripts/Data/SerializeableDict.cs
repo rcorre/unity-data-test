@@ -64,5 +64,5 @@ public abstract class SerializeableDict<K,V> : Dictionary<K,V>, IJsonDict {
         }
     }
 
-    public string[] Keys { get { return Enum.GetNames(typeof(K)); } }
+    public new string[] Keys { get { return Enum.GetNames(typeof(K)); } }
 }

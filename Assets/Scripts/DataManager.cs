@@ -42,4 +42,10 @@ public class DataManager : MonoBehaviour {
 	Util.Assert(_store[type].ContainsKey(key), "key " + key + " not found in store of " + type);
         return (T)_store[typeof(T)][key];
     }
+
+    public static IEnumerable<T> FetchAll<T>() {
+	Type type = typeof(T);
+	Util.Assert(_store.ContainsKey(type), "no data of type " + type + "has been loaded");
+        return _store[typeof(T)].Values.Cast<T>();
+    }
 }
